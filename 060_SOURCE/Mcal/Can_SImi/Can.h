@@ -76,8 +76,6 @@ extern "C" {
 #error "Module ID Numbers of Can.h and Can_Types.h are different."
 #endif
 
-
-
 /* Check if current file and Can_Types.h are of the same Software version */
 #if ((CAN_SW_MAJOR_VERSION_H != CAN_TYPES_SW_MAJOR_VERSION_H) || \
      (CAN_SW_MINOR_VERSION_H != CAN_TYPES_SW_MINOR_VERSION_H) || \
@@ -91,6 +89,8 @@ extern "C" {
      (CAN_AR_RELEASE_REVISION_VERSION_H != CAN_TYPES_AR_RELEASE_REVISION_VERSION_H))
 #error "AutoSar Version Numbers of Can.h and Can_Types.h"
 #endif
+
+
 
 #if (STD_ON == CAN_DEV_ERROR_DETECT)
 /**
@@ -152,6 +152,11 @@ CAN_CONFIG_EXT
 /** @defgroup Public_FunctionDeclaration
  *  @{
  */
+
+
+/*------------------------------------------------------------------------------------------------|
+| GLOBAL FUNCTION                                                                                 |
+|------------------------------------------------------------------------------------------------*/
 #define CAN_START_SEC_CODE_SLOW
 #include "Can_MemMap.h"
  
@@ -169,6 +174,9 @@ CAN_CONFIG_EXT
  */
 FUNC(void, CAN_CODE_SLOW) Can_Init(P2CONST(Can_ConfigType, AUTOMATIC, CAN_APPL_DATA) Config);
  
+
+
+
 /**
  * @brief        This function returns the version information of this module.
  *
@@ -182,7 +190,9 @@ FUNC(void, CAN_CODE_SLOW) Can_Init(P2CONST(Can_ConfigType, AUTOMATIC, CAN_APPL_D
  * @Design       SDD_CAN_002, SDD_CAN_099, SDD_CAN_100
  */
 FUNC(void, CAN_CODE_SLOW) Can_GetVersionInfo(P2VAR(Std_VersionInfoType, AUTOMATIC, CAN_APPL_DATA) versioninfo);
- 
+
+
+
 /**
  * @brief        This function de-initializes the module.
  *
@@ -196,7 +206,9 @@ FUNC(void, CAN_CODE_SLOW) Can_GetVersionInfo(P2VAR(Std_VersionInfoType, AUTOMATI
  * @Design       SDD_CAN_003, SDD_CAN_025, SDD_CAN_027, SDD_CAN_099, SDD_CAN_100, SDD_CAN_102
  */
 FUNC(void, CAN_CODE_SLOW) Can_DeInit(void);
- 
+
+
+
 #if (STD_ON == CAN_SET_BAUDRATE_API)
 /**
  * @brief        This service shall set the baud rate configuration of the CAN controller. Depending on necessary baud rate modifications the controller might
@@ -214,6 +226,8 @@ FUNC(void, CAN_CODE_SLOW) Can_DeInit(void);
  */
 FUNC(Std_ReturnType, CAN_CODE_SLOW) Can_SetBaudrate(VAR(uint8, AUTOMATIC) Controller, VAR(uint16, AUTOMATIC) BaudRateConfigID);
 #endif /* STD_ON == CAN_SET_BAUDRATE_API */
+
+
  
 /**
  * @brief        This function performs software triggered state transitions of the CAN controller State machine.
@@ -231,6 +245,10 @@ FUNC(Std_ReturnType, CAN_CODE_SLOW) Can_SetBaudrate(VAR(uint8, AUTOMATIC) Contro
  */
 FUNC(Std_ReturnType, CAN_CODE_SLOW) Can_SetControllerMode(VAR(uint8, AUTOMATIC) Controller, VAR(Can_ControllerStateType, AUTOMATIC) Transition);
  
+
+
+
+
 /**
  * @brief        This function disables all interrupts for this CAN controller.
  *
@@ -244,6 +262,9 @@ FUNC(Std_ReturnType, CAN_CODE_SLOW) Can_SetControllerMode(VAR(uint8, AUTOMATIC) 
  */
 FUNC(void, CAN_CODE_SLOW) Can_DisableControllerInterrupts(VAR(uint8, AUTOMATIC) Controller);
  
+
+
+
 /**
  * @brief        This function enables all allowed interrupts.
  *
@@ -257,6 +278,10 @@ FUNC(void, CAN_CODE_SLOW) Can_DisableControllerInterrupts(VAR(uint8, AUTOMATIC) 
  */
 FUNC(void, CAN_CODE_SLOW) Can_EnableControllerInterrupts(VAR(uint8, AUTOMATIC) Controller);
  
+
+
+
+
 #if (STD_ON == CAN_WAKEUP_SUPPORT)
 /**
  * @brief        This function checks if a wakeup has occurred for the given controller.
@@ -274,7 +299,12 @@ FUNC(void, CAN_CODE_SLOW) Can_EnableControllerInterrupts(VAR(uint8, AUTOMATIC) C
  */
 FUNC(Std_ReturnType, CAN_CODE_SLOW) Can_CheckWakeup(VAR(uint8, AUTOMATIC) Controller);
 #endif /* STD_ON == CAN_WAKEUP_SUPPORT */
- 
+
+
+
+
+
+
 /**
  * @brief        This service obtains the error state of the CAN controller.
  *
@@ -291,7 +321,10 @@ FUNC(Std_ReturnType, CAN_CODE_SLOW) Can_CheckWakeup(VAR(uint8, AUTOMATIC) Contro
  */
 FUNC(Std_ReturnType, CAN_CODE_SLOW) Can_GetControllerErrorState(VAR(uint8, AUTOMATIC) ControllerId,
                                                                 P2VAR(Can_ErrorStateType, AUTOMATIC, CAN_APPL_DATA) ErrorStatePtr);
- 
+
+
+
+
 /**
  * @brief        This service reports about the current status of the requested CAN controller.
  *
@@ -308,7 +341,10 @@ FUNC(Std_ReturnType, CAN_CODE_SLOW) Can_GetControllerErrorState(VAR(uint8, AUTOM
  */
 FUNC(Std_ReturnType, CAN_CODE_SLOW) Can_GetControllerMode(VAR(uint8, AUTOMATIC) Controller,
                                                           P2VAR(Can_ControllerStateType, AUTOMATIC, CAN_APPL_DATA) ControllerModePtr);
- 
+
+
+
+                                                          
 /**
  * @brief        Returns the Rx error counter for a CAN controller. This value might not be available for all CAN controllers, in which case E_NOT_OK would
  *               be returned.
@@ -329,6 +365,10 @@ FUNC(Std_ReturnType, CAN_CODE_SLOW) Can_GetControllerMode(VAR(uint8, AUTOMATIC) 
 FUNC(Std_ReturnType, CAN_CODE_SLOW) Can_GetControllerRxErrorCounter(VAR(uint8, AUTOMATIC) ControllerId,
                                                                     P2VAR(uint8, AUTOMATIC, CAN_APPL_DATA) RxErrorCounterPtr);
  
+
+
+
+
 /**
  * @brief        Returns the Tx error counter for a CAN controller. This value might not be available for all CAN controllers, in which case E_NOT_OK would
  *               be returned.
@@ -349,6 +389,8 @@ FUNC(Std_ReturnType, CAN_CODE_SLOW) Can_GetControllerRxErrorCounter(VAR(uint8, A
 FUNC(Std_ReturnType, CAN_CODE_SLOW) Can_GetControllerTxErrorCounter(VAR(uint8, AUTOMATIC) ControllerId,
                                                                     P2VAR(uint8, AUTOMATIC, CAN_APPL_DATA) TxErrorCounterPtr);
  
+
+
 #if (STD_ON == CAN_GLOBAL_TIME_SUPPORT)
 /**
  * @brief        Returns a time value out of the HW registers according to the capability of the HW.
@@ -367,6 +409,10 @@ FUNC(Std_ReturnType, CAN_CODE_SLOW) Can_GetControllerTxErrorCounter(VAR(uint8, A
  */
 FUNC(Std_ReturnType, CAN_CODE_SLOW) Can_GetCurrentTime(VAR(uint8, AUTOMATIC) ControllerId, P2VAR(Can_TimeStampType, AUTOMATIC, CAN_APPL_DATA) timeStampPtr);
  
+
+
+
+
 /**
  * @brief        Activates egress time stamping on a dedicated HTH.
  *
@@ -381,7 +427,11 @@ FUNC(Std_ReturnType, CAN_CODE_SLOW) Can_GetCurrentTime(VAR(uint8, AUTOMATIC) Con
  * @Design       SDD_CAN_014, SDD_CAN_024, SDD_CAN_027, SDD_CAN_099, SDD_CAN_100
  */
 FUNC(void, CAN_CODE_SLOW) Can_EnableEgressTimeStamp(VAR(Can_HwHandleType, AUTOMATIC) Hth);
- 
+
+
+
+
+
 /**
  * @brief        Reads back the egress time stamp on a dedicated message object. It needs to be called within the TxConfirmation() function.
  *
@@ -401,6 +451,10 @@ FUNC(Std_ReturnType, CAN_CODE_SLOW) Can_GetEgressTimeStamp(VAR(PduIdType, AUTOMA
                                                            VAR(Can_HwHandleType, AUTOMATIC) Hth,
                                                            P2VAR(Can_TimeStampType, AUTOMATIC, CAN_APPL_DATA) timeStampPtr);
  
+
+
+
+
 /**
  * @brief        Reads back the ingress time stamp on a dedicated message object. It needs to be called within the RxIndication() function.
  *
@@ -419,6 +473,12 @@ FUNC(Std_ReturnType, CAN_CODE_SLOW) Can_GetIngressTimeStamp(VAR(Can_HwHandleType
                                                             P2VAR(Can_TimeStampType, AUTOMATIC, CAN_APPL_DATA) timeStampPtr);
 #endif /* STD_ON == CAN_GLOBAL_TIME_SUPPORT */
  
+
+
+
+
+
+
 /**
  * @brief        This function is called by CanIf to pass a CAN message to CanDrv for transmission.
  *
@@ -438,6 +498,10 @@ FUNC(Std_ReturnType, CAN_CODE_SLOW) Can_GetIngressTimeStamp(VAR(Can_HwHandleType
  */
 FUNC(Std_ReturnType, CAN_CODE_SLOW) Can_Write(VAR(Can_HwHandleType, AUTOMATIC) Hth, P2CONST(Can_PduType, AUTOMATIC, CAN_APPL_DATA) PduInfo);
  
+
+
+
+
 /**
  * @brief        This function performs the polling of TX confirmation when CAN_TX_PROCESSING is set to POLLING.
  *
@@ -451,7 +515,9 @@ FUNC(Std_ReturnType, CAN_CODE_SLOW) Can_Write(VAR(Can_HwHandleType, AUTOMATIC) H
  * @Design       SDD_CAN_018, SDD_CAN_024, SDD_CAN_027, SDD_CAN_099
  */
 FUNC(void, CAN_CODE_SLOW) Can_MainFunction_Write(void);
- 
+
+
+
 /**
  * @brief        This function performs the polling of RX indications when CAN_RX_PROCESSING is set to POLLING.
  *
@@ -465,7 +531,9 @@ FUNC(void, CAN_CODE_SLOW) Can_MainFunction_Write(void);
  * @Design       SDD_CAN_019, SDD_CAN_024, SDD_CAN_027, SDD_CAN_099, SDD_CAN_100
  */
 FUNC(void, CAN_CODE_SLOW) Can_MainFunction_Read(void);
- 
+
+
+
 /**
  * @brief        This function performs the polling of bus-off events that are configured statically as 'to be polled'.
  *
@@ -479,7 +547,9 @@ FUNC(void, CAN_CODE_SLOW) Can_MainFunction_Read(void);
  * @Design       SDD_CAN_020, SDD_CAN_024, SDD_CAN_027, SDD_CAN_099
  */
 FUNC(void, CAN_CODE_SLOW) Can_MainFunction_BusOff(void);
- 
+
+
+
 #if (STD_ON == CAN_WAKEUP_SUPPORT)
 /**
  * @brief        This function performs the polling of wake-up events that are configured statically as 'to be polled'.
@@ -495,7 +565,10 @@ FUNC(void, CAN_CODE_SLOW) Can_MainFunction_BusOff(void);
  */
 FUNC(void, CAN_CODE_SLOW) Can_MainFunction_Wakeup(void);
 #endif /* STD_ON == CAN_WAKEUP_SUPPORT */
- 
+
+
+
+
 /**
  * @brief        This function performs the polling of CAN controller mode transitions.
  *
@@ -510,6 +583,10 @@ FUNC(void, CAN_CODE_SLOW) Can_MainFunction_Wakeup(void);
  */
 FUNC(void, CAN_CODE_SLOW) Can_MainFunction_Mode(void);
  
+
+
+
+
 /**
  * @brief        This function performs a CAN controller Loopback test to verify proper operation.
  *
