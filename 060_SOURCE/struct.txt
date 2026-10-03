@@ -1,0 +1,48 @@
+Can/
+├── include/
+│   ├── Can.h
+│   ├── Can_GeneralTypes.h
+│   ├── Can_Types.h
+│   ├── Can_Hw.h
+│   └── Can_Cfg.h             # file sinh từ cấu hình
+├── src/
+│   ├── Can.c                 # xử lý API AUTOSAR, trạng thái, kiểm tra tham số
+│   ├── Can_Irq.c             # xử lý ngắt và gọi callback
+│   └── Can_PBcfg.c           # dữ liệu cấu hình được sinh
+└── hw/
+    └── stm32f407/
+        ├── Can_Hw_Stm32F4.h
+        └── Can_Hw_Stm32F4.c  # truy cập thanh ghi bxCAN
+
+Can/
+│
+├── Configuration/  # file sinh từ cấu hình Can_Cfg.h
+│   │
+|   ├── include/
+│   │   ├── Can_Cfg.h
+│   │
+│   ├── src/
+│       ├── Can_PBcfg.c
+│    
+├── IP/ # Can.h, Can_Types.h, Can_GeneralTypes.h
+│   │
+|   ├── include/
+│   │   ├── Can.h
+│   │   ├── Can_Types.h
+│   │
+│   ├── src/
+│       ├── Can.c
+│       ├── Can_Irq.c
+│    
+├── IPC/ # Can_Ipc.h
+│   │
+|   ├── include/
+│   │   ├── Can_Ipc.h
+│   │   
+│   ├── src/
+│       ├── Can_Ipc.c
+│    
+└── HW/# Giao diện truy cập phần cứng
+    ├── Can_Hw.h
+    └── STM32F407/
+        └── Can_Hw_Stm32F407.h
