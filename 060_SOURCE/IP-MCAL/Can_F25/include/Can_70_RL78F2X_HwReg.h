@@ -507,9 +507,9 @@ typedef struct {
     Can_70_RL78F2X_CanChannelRegInfoType ChannelRegInfo[ CAN_70_RL78F2X_CHANNEL_MAX ];
 } Can_70_RL78F2X_CanControllerRegInfoType;
 
-/*----------------------------------------------------------------------------*/
-/* external variables                                                         */
-/*----------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------------|
+| EXTERN VARIABLES                                                                                                         |
+|-------------------------------------------------------------------------------------------------------------------------*/
 extern volatile const Can_70_RL78F2X_CanControllerRegInfoType Can_70_CanControllerRegInfo[ CAN_70_NUM_OF_CAN_CHANNEL ];
 extern const Can_70_InterruptBitAssignType Can_70_InterruptBitAssign[ CAN_70_NUM_OF_CAN_CHANNEL ];
 

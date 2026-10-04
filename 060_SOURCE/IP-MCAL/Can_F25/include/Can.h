@@ -42,7 +42,7 @@ extern "C" {
 #endif
 
 /*-------------------------------------------------------------------------------------------------------------------------|
-| INCLUDES                                                                                        |
+| INCLUDES                                                                                                                 |
 |-------------------------------------------------------------------------------------------------------------------------*/
 #include "ComStack_Types.h"
 #include "Can_GeneralTypes.h"
@@ -57,7 +57,7 @@ extern "C" {
 #endif /* #if( CAN_USE_OS_COUNTER == TRUE ) */
  
 /*-------------------------------------------------------------------------------------------------------------------------|
-| SOURCE FILE VERSION                                                                             |
+| SOURCE FILE VERSION                                                                                                      |
 |-------------------------------------------------------------------------------------------------------------------------*/
 /* Common published information */
 #define CAN_VENDOR_ID_H                         (0x00U)
@@ -74,7 +74,7 @@ extern "C" {
 #define CAN_AR_RELEASE_REVISION_VERSION_H       (0x00U)
 
 /*-------------------------------------------------------------------------------------------------------------------------|
-| FILE VERSION CHECK                                                                              |
+| FILE VERSION CHECK                                                                                                       |
 |-------------------------------------------------------------------------------------------------------------------------*/
 
 /*---------------ComStack_Types.h--------------------------------------------------*/
@@ -192,7 +192,7 @@ extern "C" {
 /* Can.h version check end */
 
 /*-------------------------------------------------------------------------------------------------------------------------|
-| LOCAL MACROS                                                                                    |
+| LOCAL MACROS                                                                                                             |
 |-------------------------------------------------------------------------------------------------------------------------*/
 
 /* API CAN Function Service Identifier */
@@ -253,13 +253,9 @@ extern "C" {
 #define CAN_E_PARAM_LPDU                     ((uint8)0x0AU) /* API service called with invalid PDU ID  */
 #endif /* (STD_ON == CAN_DEV_ERROR_DETECT) */
  
-/*----------------------------------------------------------------------------*/
-/* type definitions                                                           */
-/*----------------------------------------------------------------------------*/
-
-/*----------------------------------------------------------------------------*/
-/* external variables                                                         */
-/*----------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------------|
+| EXTERN VARIABLES                                                                                                         |
+|-------------------------------------------------------------------------------------------------------------------------*/
 #define CAN_START_SEC_VAR_INIT_LOCAL_8
 #include "Can_MemMap.h"
 
@@ -280,46 +276,71 @@ extern const Can_ConfigType    Can_Config;
 #include "Can_MemMap.h"
 
 /*-------------------------------------------------------------------------------------------------------------------------|
-| GLOBAL FUNCTION                                                                                 |
+| GLOBAL FUNCTION                                                                                                          |
 |-------------------------------------------------------------------------------------------------------------------------*/
 #define CAN_START_SEC_CODE_LOCAL
 #include "Can_MemMap.h"
 
 /*-------------------------------------------------------------------------------------------------------------------------|
-| Module ID   | CAN_MODULE_ID (0x50)                                                              |
-| Service ID  | CAN_INIT_ID (0x00)                                                                |
-| Name        | Can_Init                                                                          |
-| Contents    | This function initializes the Can module.                                         |
-| Details     | Initializes the CAN module with the provided configuration parameters.            |
-|             | This function sets up initial settings for the CAN controller,                    |
-|             | allocates necessary resources, and prepares the module for operation.             |
-| SRS ID      | [SWS_Can_00223]                                                                   |
-| Author      | HaoNP                                                                             |
-| Param [in]  | Config: Pointer to driver configuration.                                          |
-| Param [out] | None                                                                              |
-| Return      | None                                                                              |
-| SWS ID:     |                                                                                   |
-| Vender ID:  |                                                                                   |
-| Sync/Async  | Synchronous                                                                       |
+| Module ID   | CAN_MODULE_ID (0x50)                                                                                       |
+|             |                                                                                                            |
+| Service ID  | CAN_INIT_ID (0x00)                                                                                         |
+|--------------------------------------------------------------------------------------------------------------------------|
+| SWS ID      | [SWS_CAN_00223]                                                                                            |
+|             |                                                                                                            |
+| Name        | Can_Init                                                                                                   |
+|             |                                                                                                            |
+| Sync/Async  | Synchronous                                                                                                |
+|             |                                                                                                            |
+| Contents    | This function initializes the Can module.                                                                  |
+|             |                                                                                                            |
+| Details     | Initializes the CAN module with the provided configuration parameters. This function sets up initial       |
+|             | settings for the CAN controller, allocates necessary resources, and prepares the module for operation.     |
+|             |                                                                                                            |
+| Param [in]  | Config: Pointer to driver configuration.                                                                   |
+|             |                                                                                                            |
+| Param [out] | None.                                                                                                      |
+|             |                                                                                                            |
+| Return      | None.                                                                                                      |
+|--------------------------------------------------------------------------------------------------------------------------|
+| SWS ID:     |                                                                                                            |
+|             |                                                                                                            |
+|             |                                                                                                            |
+| Vender ID:  |                                                                                                            |
+|             |                                                                                                            |
 |-------------------------------------------------------------------------------------------------------------------------*/
 void Can_Init( const Can_ConfigType* Config );
 
 
+
+
 /*-------------------------------------------------------------------------------------------------------------------------|
-| Module ID   | CAN_MODULE_ID (0x50)                                                              |
-| Service ID  | PORT_GET_VERSION_INFO_ID (0x07)                                                   |
-| Name        | Can_GetVersionInfo                                                                |
-| Contents    | This function returns the version information of this Can module.                 |
-| Details     | Returns the version information of the CAN module. Typically includes software    |
-              | version, vendor ID, and other relevant details about the implementation           |
-| SRS ID      | [SWS_Can_00224]                                                                   |
-| Author      | HaoNP                                                                             |
-| Param [in]  | Versioninfo: Pointer to where to store the version information of this module.    |
-| Param [out] | None                                                                              |
-| Return      | None                                                                              |
-| SWS ID:     |                                                                                   |
-| Vender ID:  |                                                                                   |
-| Sync/Async  | Synchronous                                                                       |
+| Module ID   | CAN_MODULE_ID (0x50)                                                                                       |
+|             |                                                                                                            |
+| Service ID  | PORT_GET_VERSION_INFO_ID (0x07)                                                                            |
+|--------------------------------------------------------------------------------------------------------------------------|
+| SWS ID      | [SWS_Can_00224]                                                                                            |
+|             |                                                                                                            |
+| Name        | Can_GetVersionInfo                                                                                         |
+|             |                                                                                                            |
+| Sync/Async  | Synchronous                                                                                                |
+|             |                                                                                                            |
+| Contents    | This function returns the version information of this Can module.                                          |
+|             |                                                                                                            |
+| Details     | Returns the version information of the CAN module. Typically includes software version, vendor ID, and     |
+|             | other relevant details about the implementation.                                                           |
+|             |                                                                                                            |
+| Param [in]  | Versioninfo: Pointer to where to store the version information of this module.                             |
+|             |                                                                                                            |
+| Param [out] | None                                                                                                       |
+|             |                                                                                                            |
+| Return      | None                                                                                                       |
+|--------------------------------------------------------------------------------------------------------------------------|
+| SWS ID:     |                                                                                                            |
+|             |                                                                                                            |
+|             |                                                                                                            |
+| Vender ID:  |                                                                                                            |
+|             |                                                                                                            |
 |-------------------------------------------------------------------------------------------------------------------------*/
 #if (STD_ON == CAN_VERSION_INFO_API)
 void Can_GetVersionInfo( Std_VersionInfoType* Versioninfo );
@@ -327,43 +348,67 @@ void Can_GetVersionInfo( Std_VersionInfoType* Versioninfo );
 
 
 /*-------------------------------------------------------------------------------------------------------------------------|
-| Module ID   | CAN_MODULE_ID (0x50)                                                              |
-| Service ID  | CAN_DEINIT_ID (0x10)                                                              |
-| Name        | Can_DeInit                                                                        |
-| Contents    | This function de-initializes the Can module.                                      |
-| Details     | De-initializes and releases the CAN module. This function resets the controller   |
-              | to its default state, frees allocated resources, and stops alL                    |
-              | CAN-related activities.                                                           |
-| SRS ID      | [SWS_Can_91002]                                                                   |
-| Author      | HaoNP                                                                             |
-| Param [in]  | None                                                                              |
-| Param [out] | None                                                                              |
-| Return      | None                                                                              |
-| SWS ID:     |                                                                                   |
-| Vender ID:  |                                                                                   |
-| Sync/Async  | Synchronous                                                                       |
+| Module ID   | CAN_MODULE_ID (0x50)                                                                                       |
+|             |                                                                                                            |
+| Service ID  | CAN_DEINIT_ID (0x10)                                                                                       |
+|--------------------------------------------------------------------------------------------------------------------------|
+| SWS ID      | [SWS_Can_91002]                                                                                            |
+|             |                                                                                                            |
+| Name        | Can_DeInit                                                                                                 |
+|             |                                                                                                            |
+| Sync/Async  | Synchronous                                                                                                |
+|             |                                                                                                            |
+| Contents    | This function de-initializes the Can module.                                                               |
+|             |                                                                                                            |
+| Details     | De-initializes and releases the CAN module. This function resets the controller to its default state,      |
+|             | frees allocated resources, and stops alL CAN-related activities.                                           |
+|             |                                                                                                            |
+| Param [in]  | None                                                                                                       |
+|             |                                                                                                            |
+| Param [out] | None                                                                                                       |
+|             |                                                                                                            |
+| Return      | None                                                                                                       |
+|--------------------------------------------------------------------------------------------------------------------------|
+| SWS ID:     |                                                                                                            |
+|             |                                                                                                            |
+| Vender ID:  |                                                                                                            |
+|             |                                                                                                            |
+|             |                                                                                                            |
 |-------------------------------------------------------------------------------------------------------------------------*/
 void Can_DeInit( void );
 
 
 /*-------------------------------------------------------------------------------------------------------------------------|
-| Module ID   | CAN_MODULE_ID (0x50)                                                              |
-| Service ID  | CAN_SET_BAUDRATE_ID (0x0F)                                                        |
-| Name        | Can_SetBaudrate                                                                   |
-| Contents    | This service shall set the baud rate configuration of the CAN controller.         | 
-              | Depending on necessary baud rate modifications the controller might               |
-| Details     | Sets or changes the baud rate configuration of the CAN controller. Allows dynamic |
-              | adjustment of the CAN network communication speed.                                |
-| SRS ID      | [SWS_Can_00491]                                                                   |
-
-| Param [in]  | Controller: CAN controller, whose baud rate shall be set.                         |
-| Param [in]  | BaudRateConfigID: References a baud rate configuration by ID                      |
-| Return      | Std_ReturnType.                                                                   |
-| Return      | E_OK: Service request accepted, setting of (new) baud rate started.               |
-| Return      | E_NOT_OK: Service request not accepted.                                           |
-| SWS ID:     |                                                                                   |
-| Vender ID:  |                                                                                   |
-| Sync/Async  | Synchronous                                                                       |
+| Module ID   | CAN_MODULE_ID (0x50)                                                                                       |
+|             |                                                                                                            |
+| Service ID  | CAN_SET_BAUDRATE_ID (0x0F)                                                                                 |
+|--------------------------------------------------------------------------------------------------------------------------|
+| SWS ID      | [SWS_Can_00491]                                                                                            |
+|             |                                                                                                            |
+| Name        | Can_SetBaudrate                                                                                            |
+|             |                                                                                                            |
+| Sync/Async  | Synchronous                                                                                                |
+|             |                                                                                                            |
+| Contents    | This service shall set the baud rate configuration of the CAN controller. Depending on necessary baud rate |
+|             |  modifications the controller might.                                                                       |
+|             |                                                                                                            |
+| Details     | Sets or changes the baud rate configuration of the CAN controller. Allows dynamic adjustment of the CAN    |
+|             | network communication speed.                                                                               |
+|             |                                                                                                            |
+|             |                                                                                                            |
+| Param [in]  | Controller: CAN controller, whose baud rate shall be set.                                                  |
+|             |                                                                                                            |
+| Param [in]  | BaudRateConfigID: References a baud rate configuration by ID                                               |
+|             |                                                                                                            |
+| Return      | Std_ReturnType.                                                                                            |
+|             | E_OK: Service request accepted, setting of (new) baud rate started.                                        |
+|             | E_NOT_OK: Service request not accepted.                                                                    |
+|--------------------------------------------------------------------------------------------------------------------------|
+| SWS ID:     |                                                                                                            |
+|             |                                                                                                            |
+| Vender ID:  |                                                                                                            |
+|             |                                                                                                            |
+|             |                                                                                                            |
 |-------------------------------------------------------------------------------------------------------------------------*/
 #if (STD_ON == CAN_SET_BAUDRATE_API)
 Std_ReturnType Can_SetBaudrate( uint8 Controller, uint16 BaudRateConfigID );
@@ -371,128 +416,119 @@ Std_ReturnType Can_SetBaudrate( uint8 Controller, uint16 BaudRateConfigID );
 
 
 /*-------------------------------------------------------------------------------------------------------------------------|
-| Module ID   | CAN_MODULE_ID (0x50)                                                              |
-|             |                                                                                   |
-| Service ID  | CAN_SET_CONTROLLER_MODE_ID (0x03)                                                 |
-|             |                                                                                   |
+| Module ID   | CAN_MODULE_ID (0x50)                                                                                       |
+|             |                                                                                                            |
+| Service ID  | CAN_SET_CONTROLLER_MODE_ID (0x03)                                                                          |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SRS ID      | [SWS_Can_00230]                                                                   |
-|             |                                                                                   |
-| Sync/Async  | Asynchronous                                                                      |
-|             |                                                                                   |
-| Name        | Can_SetControllerMode                                                             |
-|             |                                                                                   |
-| Contents    | This function performs software triggered state transitions of the CAN controller |
-|             | State machine.                                                                    |
-|             |                                                                                   |
-| Details     | Performs software-triggered state transitions of the CAN controller, such as      |
-|             | switching between Start, Stop, or Sleep modes.                                    |
-|             |                                                                                   |
-
-| Param [in]  | Controller: CAN controller for which the status shall be changed.                 |
-| Param [in]  | Transition: Transition value to request new CAN controller state.                 |
-|             |                                                                                   |
-| Return      | Std_ReturnType.                                                                   |
-|             | E_OK: Service request accepted, setting of (new) baud rate started.               |
-|             | E_NOT_OK: Service request not accepted.                                           |
+| SWS ID      | [SWS_Can_00230]                                                                                            |
+|             |                                                                                                            |
+| Name        | Can_SetControllerMode                                                                                      |
+|             |                                                                                                            |
+| Sync/Async  | Asynchronous                                                                                               |
+|             |                                                                                                            |
+| Contents    | This function performs software triggered state transitions of the CAN controller  State machine.          |
+|             |                                                                                                            |
+| Details     | Performs software-triggered state transitions of the CAN controller, such as switching between Start,      |
+|             | Stop, or Sleep modes.                                                                                      |
+|             |                                                                                                            |
+| Param [in]  | Controller: CAN controller for which the status shall be changed.                                          |
+|             |                                                                                                            |
+| Param [in]  | Transition: Transition value to request new CAN controller state.                                          |
+|             |                                                                                                            |
+| Return      | Std_ReturnType.                                                                                            |
+|             | E_OK: Service request accepted, setting of (new) baud rate started.                                        |
+|             | E_NOT_OK: Service request not accepted.                                                                    |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SWS ID:     |                                                                                   |
-|             |                                                                                   |
-|             |                                                                                   |
-| Vender ID:  |                                                                                   |
-|             |                                                                                   |
+| SWS ID:     |                                                                                                            |
+|             |                                                                                                            |
+| Vender ID:  |                                                                                                            |
+|             |                                                                                                            |
 |-------------------------------------------------------------------------------------------------------------------------*/
 Std_ReturnType Can_SetControllerMode( uint8 Controller, Can_ControllerStateType Transition );
 
 
 /*-------------------------------------------------------------------------------------------------------------------------|
-| Module ID   | CAN_MODULE_ID (0x50)                                                              |
-|             |                                                                                   |
-| Service ID  | CAN_DISABLE_CONTROLLER_INTERRUPTS_ID (0x04)                                       |
-|             |                                                                                   |
+| Module ID   | CAN_MODULE_ID (0x50)                                                                                       |
+|             |                                                                                                            |
+| Service ID  | CAN_DISABLE_CONTROLLER_INTERRUPTS_ID (0x04)                                                                |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SRS ID      | [SWS_Can_00231]                                                                   |
-|             |                                                                                   |
-| Sync/Async  | Synchronous                                                                       |
-|             |                                                                                   |
-| Name        | Can_DisableControllerInterrupts                                                   |
-|             |                                                                                   |
-| Contents    | This function disables all interrupts for this CAN controller.                    |
-|             |                                                                                   |
-| Details     | Disables all interrupts for the specified CAN controller. Used to protect         |
-|             | critical operations from being interrupted.                                       |
-|             |                                                                                   |
-| Param [in]  | Controller: CAN controller for which interrupts shall be disabled.                |
-|             |                                                                                   |
-| Return      | None.                                                                             |
+| SWS ID      | [SWS_Can_00231]                                                                                            |
+|             |                                                                                                            |
+| Sync/Async  | Synchronous                                                                                                |
+|             |                                                                                                            |
+| Name        | Can_DisableControllerInterrupts                                                                            |
+|             |                                                                                                            |
+| Contents    | This function disables all interrupts for this CAN controller.                                             |
+|             |                                                                                                            |
+| Details     | Disables all interrupts for the specified CAN controller. Used to protect critical operations from being   |
+|             |  interrupted.                                                                                              |
+|             |                                                                                                            |
+| Param [in]  | Controller: CAN controller for which interrupts shall be disabled.                                         |
+|             |                                                                                                            |
+| Return      | None.                                                                                                      |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SWS ID:     |                                                                                   |
-|             |                                                                                   |
-|             |                                                                                   |
-| Vender ID:  |                                                                                   |
-|             |                                                                                   |
+| SWS ID:     |                                                                                                            |
+|             |                                                                                                            |
+| Vender ID:  |                                                                                                            |
+|             |                                                                                                            |
 |-------------------------------------------------------------------------------------------------------------------------*/
 extern void Can_DisableControllerInterrupts( uint8 Controller );
 
 
 /*-------------------------------------------------------------------------------------------------------------------------|
-| Module ID   | CAN_MODULE_ID (0x50)                                                              |
-|             |                                                                                   |
-| Service ID  | CAN_ENABLE_CONTROLLER_INTERRUPTS_ID (0x05)                                        |
-|             |                                                                                   |
+| Module ID   | CAN_MODULE_ID (0x50)                                                                                       |
+|             |                                                                                                            |
+| Service ID  | CAN_ENABLE_CONTROLLER_INTERRUPTS_ID (0x05)                                                                 |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SRS ID      | [SWS_Can_00232]                                                                   |
-|             |                                                                                   |
-| Sync/Async  | Synchronous                                                                       |
-|             |                                                                                   |
-| Name        | Can_EnableControllerInterrupts                                                    |
-|             |                                                                                   |
-| Contents    | This function enables all allowed interrupts.                                     |
-|             |                                                                                   |
-| Details     | Enables all allowed interrupts for the specified CAN controller, allowing         |
-|             | the controller to respond to real-time events.                                    |
-|             |                                                                                   |
-| Param [in]  | Controller: CAN controller for which interrupts shall be disabled.                |
-|             |                                                                                   |
-| Return      | None.                                                                             |
+| SWS ID      | [SWS_Can_00232]                                                                                            |
+|             |                                                                                                            |
+| Name        | Can_EnableControllerInterrupts                                                                             |
+|             |                                                                                                            |
+| Sync/Async  | Synchronous                                                                                                |
+|             |                                                                                                            |
+| Contents    | This function enables all allowed interrupts.                                                              |
+|             |                                                                                                            |
+| Details     | Enables all allowed interrupts for the specified CAN controller, allowing the controller to respond to     |
+|             | real-time events.                                                                                          |
+|             |                                                                                                            |
+| Param [in]  | Controller: CAN controller for which interrupts shall be disabled.                                         |
+|             |                                                                                                            |
+| Return      | None.                                                                                                      |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SWS ID:     |                                                                                   |
-|             |                                                                                   |
-|             |                                                                                   |
-| Vender ID:  |                                                                                   |
-|             |                                                                                   |
+| SWS ID:     |                                                                                                            |
+|             |                                                                                                            |
+| Vender ID:  |                                                                                                            |
+|             |                                                                                                            |
 |-------------------------------------------------------------------------------------------------------------------------*/
 extern void Can_EnableControllerInterrupts( uint8 Controller );
 
 
 /*-------------------------------------------------------------------------------------------------------------------------|
-| Module ID   | CAN_MODULE_ID (0x50)                                                              |
-|             |                                                                                   |
-| Service ID  | CAN_CHECK_WAKEUP_ID (0x0B)                                                        |
-|             |                                                                                   |
+| Module ID   | CAN_MODULE_ID (0x50)                                                                                       |
+|             |                                                                                                            |
+| Service ID  | CAN_CHECK_WAKEUP_ID (0x0B)                                                                                 |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SRS ID      | [SWS_Can_00360]                                                                   |
-|             |                                                                                   |
-| Sync/Async  | Synchronous                                                                       |
-|             |                                                                                   |
-| Name        | Can_CheckWakeup                                                                   |
-|             |                                                                                   |
-| Contents    | This function checks if a wakeup has occurred for the given controller.           |
-|             |                                                                                   |
-| Details     | Checks if a wakeup event has occurred for the given CAN controller, typically to  |
-|             | detect external triggers that bring the controller out of Sleep mode.             |
-|             |                                                                                   |
-| Param [in]  | Controller: CAN controller for which interrupts shall be disabled.                |
-|             |                                                                                   |
-| Return      | Std_ReturnType.                                                                   |
-|             | E_OK: API call has been accepted.                                                 |
-|             | E_NOT_OK: API call has not been accepted.                                         |
+| SWS ID      | [SWS_Can_00360]                                                                                            |
+|             |                                                                                                            |
+| Name        | Can_CheckWakeup                                                                                            |
+|             |                                                                                                            |
+| Sync/Async  | Synchronous                                                                                                |
+|             |                                                                                                            |
+| Contents    | This function checks if a wakeup has occurred for the given controller.                                    |
+|             |                                                                                                            |
+| Details     | Checks if a wakeup event has occurred for the given CAN controller, typically to detect external triggers  |
+|             | that bring the controller out of Sleep mode.                                                               |
+|             |                                                                                                            |
+| Param [in]  | Controller: CAN controller for which interrupts shall be disabled.                                         |
+|             |                                                                                                            |
+| Return      | Std_ReturnType.                                                                                            |
+|             | E_OK: API call has been accepted.                                                                          |
+|             | E_NOT_OK: API call has not been accepted.                                                                  |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SWS ID:     |                                                                                   |
-|             |                                                                                   |
-|             |                                                                                   |
-| Vender ID:  |                                                                                   |
-|             |                                                                                   |
+| SWS ID:     |                                                                                                            |
+|             |                                                                                                            |
+| Vender ID:  |                                                                                                            |
+|             |                                                                                                            |
 |-------------------------------------------------------------------------------------------------------------------------*/
 #if (STD_ON == CAN_WAKEUP_SUPPORT)
 Std_ReturnType Can_CheckWakeup( uint8 Controller );
@@ -500,48 +536,44 @@ Std_ReturnType Can_CheckWakeup( uint8 Controller );
 
 
 /*-------------------------------------------------------------------------------------------------------------------------|
-| Module ID   | CAN_MODULE_ID (0x50)                                                              |
-|             |                                                                                   |
-| Service ID  | CAN_GET_CONTROLLER_ERROR_STATE_ID (0x11)                                          |
-|             |                                                                                   |
+| Module ID   | CAN_MODULE_ID (0x50)                                                                                       |
+|             |                                                                                                            |
+| Service ID  | CAN_GET_CONTROLLER_ERROR_STATE_ID (0x11)                                                                   |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SRS ID      | [SWS_Can_91004]                                                                   |
-|             |                                                                                   |
-| Sync/Async  | Synchronous                                                                       |
-|             |                                                                                   |
-| Name        | Can_GetControllerErrorState                                                       |
-|             |                                                                                   |
-| Contents    | This service obtains the error state of the CAN controller.                       |
-|             |                                                                                   |
-| Details     | Obtains the current error state of the CAN controller, including conditions like  |
-|             | Bus-off, Error Passive, or Error Warning.                                         | 
-|             |                                                                                   |
-| Param [in]  | ControllerId: Abstracted CanIf ControllerId which is assigned to a CAN            |
-|             | controller, which is requested for ErrorState.                                    |
-|             |                                                                                   |
-| Param [in]  | ErrorStatePtr: Pointer to a memory location, where the error state of the         |
-|             | CAN controller will be stored.                                                    |
-|             |                                                                                   |
-| Return      | Std_ReturnType.                                                                   |
-|             | E_OK: Error state request has been accepted.                                      |
-|             | E_NOT_OK:  Error state request has not been accepted.                             |
+| SWS ID      | [SWS_Can_91004]                                                                                            |
+|             |                                                                                                            |
+| Name        | Can_GetControllerErrorState                                                                                |
+|             |                                                                                                            |
+| Sync/Async  | Synchronous                                                                                                |
+|             |                                                                                                            |
+| Contents    | This service obtains the error state of the CAN controller.                                                |
+|             |                                                                                                            |
+| Details     | Obtains the current error state of the CAN controller, including conditions like Bus-off, Error Passive,   |
+|             | or Error Warning.                                                                                          | 
+|             |                                                                                                            |
+| Param [in]  | ControllerId: Abstracted CanIf ControllerId which is assigned to a CAN controller, which is requested for  |
+|             |               ErrorState.                                                                                  |
+|             |                                                                                                            |
+| Param [in]  | ErrorStatePtr: Pointer to a memory location, where the error state of the CAN controller will be stored.   |
+|             |                                                                                                            |
+| Return      | Std_ReturnType.                                                                                            |
+|             | E_OK: Error state request has been accepted.                                                               |
+|             | E_NOT_OK:  Error state request has not been accepted.                                                      |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SWS ID:     |                                                                                   |
-|             |                                                                                   |
-|             |                                                                                   |
-| Vender ID:  |                                                                                   |
-|             |                                                                                   |
+| SWS ID:     |                                                                                                            |
+|             |                                                                                                            |
+| Vender ID:  |                                                                                                            |
+|             |                                                                                                            |
 |-------------------------------------------------------------------------------------------------------------------------*/
 Std_ReturnType Can_GetControllerErrorState( uint8 ControllerId, Can_ErrorStateType* ErrorStatePtr );
 
 
 /*-------------------------------------------------------------------------------------------------------------------------|
-| Module ID   | CAN_MODULE_ID (0x50)                                                              |
-|             |                                                                                   |
-| Service ID  | CAN_GET_CONTROLLER_MODE_ID (0x12)                                                 |
-|             |                                                                                   |
+| Module ID   | CAN_MODULE_ID (0x50)                                                                                       |
+|             |                                                                                                            |
+| Service ID  | CAN_GET_CONTROLLER_MODE_ID (0x12)                                                                          |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SRS ID      | [SWS_Can_91014]                                                                   |
+| SWS ID      | [SWS_Can_91014]                                                                   |
 |             |                                                                                   |
 | Sync/Async  | Synchronous                                                                       |
 |             |                                                                                   |
@@ -561,11 +593,10 @@ Std_ReturnType Can_GetControllerErrorState( uint8 ControllerId, Can_ErrorStateTy
 |             | E_OK: Description.                                                                |
 |             | E_NOT_OK: Description.                                                            |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SWS ID:     |                                                                                   |
-|             |                                                                                   |
-|             |                                                                                   |
-| Vender ID:  |                                                                                   |
-|             |                                                                                   |
+| SWS ID:     |                                                                                                            |
+|             |                                                                                                            |
+| Vender ID:  |                                                                                                            |
+|             |                                                                                                            |
 |-------------------------------------------------------------------------------------------------------------------------*/
 Std_ReturnType Can_GetControllerMode( uint8 Controller, Can_ControllerStateType* ControllerModePtr );
 
@@ -576,7 +607,7 @@ Std_ReturnType Can_GetControllerMode( uint8 Controller, Can_ControllerStateType*
 | Service ID  | CAN_GET_CONTROLLER_RX_ERROR_COUNTER_ID (0x30)                                     |
 |             |                                                                                   |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SRS ID      | [SWS_Can_00511]                                                                   |
+| SWS ID      | [SWS_Can_00511]                                                                   |
 |             |                                                                                   |
 | Sync/Async  | Synchronous                                                                       |
 |             |                                                                                   |
@@ -600,11 +631,10 @@ Std_ReturnType Can_GetControllerMode( uint8 Controller, Can_ControllerStateType*
 |             | E_OK: Rx error counter available.                                                 |
 |             | E_NOT_OK: Wrong ControllerId, or Rx error counter not available.                  |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SWS ID:     |                                                                                   |
-|             |                                                                                   |
-|             |                                                                                   |
-| Vender ID:  |                                                                                   |
-|             |                                                                                   |
+| SWS ID:     |                                                                                                            |
+|             |                                                                                                            |
+| Vender ID:  |                                                                                                            |
+|             |                                                                                                            |
 |-------------------------------------------------------------------------------------------------------------------------*/
 Std_ReturnType Can_GetControllerRxErrorCounter( uint8 ControllerId, uint8* RxErrorCounterPtr );
 
@@ -615,7 +645,7 @@ Std_ReturnType Can_GetControllerRxErrorCounter( uint8 ControllerId, uint8* RxErr
 | Service ID  | CAN_GET_CONTROLLER_TX_ERROR_COUNTER_ID (0x31)                                     |
 |             |                                                                                   |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SRS ID      | [SWS_Can_00516]                                                                   |
+| SWS ID      | [SWS_Can_00516]                                                                   |
 |             |                                                                                   |
 | Sync/Async  | Synchronous                                                                       |
 |             |                                                                                   |
@@ -639,11 +669,10 @@ Std_ReturnType Can_GetControllerRxErrorCounter( uint8 ControllerId, uint8* RxErr
 |             | E_OK: Tx error counter available.                                                 |
 |             | E_NOT_OK: Wrong ControllerId, or Tx error counter not available.                  |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SWS ID:     |                                                                                   |
-|             |                                                                                   |
-|             |                                                                                   |
-| Vender ID:  |                                                                                   |
-|             |                                                                                   |
+| SWS ID:     |                                                                                                            |
+|             |                                                                                                            |
+| Vender ID:  |                                                                                                            |
+|             |                                                                                                            |
 |-------------------------------------------------------------------------------------------------------------------------*/
 Std_ReturnType Can_GetControllerTxErrorCounter( uint8 ControllerId, uint8* TxErrorCounterPtr );
 
@@ -658,7 +687,7 @@ Std_ReturnType Can_GetControllerTxErrorCounter( uint8 ControllerId, uint8* TxErr
 | Service ID  | CAN_GET_CURRENT_TIME_ID (0x31)                                                    |
 |             |                                                                                   |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SRS ID      | []                                                                                |
+| SWS ID      | []                                                                                |
 |             |                                                                                   |
 | Sync/Async  | Synchronous                                                                       |
 |             |                                                                                   |
@@ -678,11 +707,10 @@ Std_ReturnType Can_GetControllerTxErrorCounter( uint8 ControllerId, uint8* TxErr
 |             | E_OK: Successful.                                                                 |
 |             | E_NOT_OK: Failed.                                                                 |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SWS ID:     |                                                                                   |
-|             |                                                                                   |
-|             |                                                                                   |
-| Vender ID:  |                                                                                   |
-|             |                                                                                   |
+| SWS ID:     |                                                                                                            |
+|             |                                                                                                            |
+| Vender ID:  |                                                                                                            |
+|             |                                                                                                            |
 |-------------------------------------------------------------------------------------------------------------------------*/
 Std_ReturnType Can_GetCurrentTime( uint8 ControllerId, Can_TimeStampType* timeStampPtr );
 
@@ -693,7 +721,7 @@ Std_ReturnType Can_GetCurrentTime( uint8 ControllerId, Can_TimeStampType* timeSt
 | Service ID  | CAN_ENABLE_EGRESS_TIME_STAMP_ID (0x33)                                            |
 |             |                                                                                   |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SRS ID      | [SWS_CAN_91025]                                                                   |
+| SWS ID      | [SWS_CAN_91025]                                                                   |
 |             |                                                                                   |
 | Sync/Async  | Synchronous                                                                       |
 |             |                                                                                   |
@@ -711,11 +739,10 @@ Std_ReturnType Can_GetCurrentTime( uint8 ControllerId, Can_TimeStampType* timeSt
 |             |                                                                                   |
 | Return      | None.                                                                             |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SWS ID:     |                                                                                   |
-|             |                                                                                   |
-|             |                                                                                   |
-| Vender ID:  |                                                                                   |
-|             |                                                                                   |
+| SWS ID:     |                                                                                                            |
+|             |                                                                                                            |
+| Vender ID:  |                                                                                                            |
+|             |                                                                                                            |
 |-------------------------------------------------------------------------------------------------------------------------*/
 void Can_EnableEgressTimeStamp( Can_HwHandleType Hth );
 
@@ -726,7 +753,7 @@ void Can_EnableEgressTimeStamp( Can_HwHandleType Hth );
 | Service ID  | CAN_GET_EGRESS_TIME_STAMP_ID (0x34)                                               |
 |             |                                                                                   |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SRS ID      | [SWS_CAN_91027]                                                                   |
+| SWS ID      | [SWS_CAN_91027]                                                                   |
 |             |                                                                                   |
 | Sync/Async  | Synchronous                                                                       |
 |             |                                                                                   |
@@ -748,11 +775,10 @@ void Can_EnableEgressTimeStamp( Can_HwHandleType Hth );
 |             | E_OK: Success.                                                                    |
 |             | E_NOT_OK: Failed to read time stamp.                                              |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SWS ID:     |                                                                                   |
-|             |                                                                                   |
-|             |                                                                                   |
-| Vender ID:  |                                                                                   |
-|             |                                                                                   |
+| SWS ID:     |                                                                                                            |
+|             |                                                                                                            |
+| Vender ID:  |                                                                                                            |
+|             |                                                                                                            |
 |-------------------------------------------------------------------------------------------------------------------------*/
 Std_ReturnType Can_GetEgressTimeStamp( PduIdType TxPduId, Can_HwHandleType Hth, Can_TimeStampType* timeStampPtr );
 
@@ -764,7 +790,7 @@ Std_ReturnType Can_GetEgressTimeStamp( PduIdType TxPduId, Can_HwHandleType Hth, 
 | Service ID  | CAN_GET_INGRESS_TIME_STAMP_ID (0x35)                                              |
 |             |                                                                                   |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SRS ID      | [SWS_CAN_91028]                                                                   |
+| SWS ID      | [SWS_CAN_91028]                                                                   |
 |             |                                                                                   |
 | Sync/Async  | Synchronous                                                                       |
 |             |                                                                                   |
@@ -784,11 +810,10 @@ Std_ReturnType Can_GetEgressTimeStamp( PduIdType TxPduId, Can_HwHandleType Hth, 
 |             | E_OK: Success.                                                                    |
 |             | E_NOT_OK: Failed to read time stamp.                                              |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SWS ID:     |                                                                                   |
-|             |                                                                                   |
-|             |                                                                                   |
-| Vender ID:  |                                                                                   |
-|             |                                                                                   |
+| SWS ID:     |                                                                                                            |
+|             |                                                                                                            |
+| Vender ID:  |                                                                                                            |
+|             |                                                                                                            |
 |-------------------------------------------------------------------------------------------------------------------------*/
 Std_ReturnType Can_GetIngressTimeStamp( Can_HwHandleType Hrh, Can_TimeStampType* timeStampPtr );
 
@@ -803,7 +828,7 @@ Std_ReturnType Can_GetIngressTimeStamp( Can_HwHandleType Hrh, Can_TimeStampType*
 | Service ID  | CAN_WRITE_ID (0x06)                                                               |
 |             |                                                                                   |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SRS ID      | [SWS_CAN_00233]                                                                   |
+| SWS ID      | [SWS_CAN_00233]                                                                   |
 |             |                                                                                   |
 | Sync/Async  | Synchronous                                                                       |
 |             |                                                                                   |
@@ -826,11 +851,10 @@ Std_ReturnType Can_GetIngressTimeStamp( Can_HwHandleType Hrh, Can_TimeStampType*
 |             | CAN_BUSY: No TX hardware buffer available or pre-emptive call of Can_Write that   |
 |             |           can't be implemented re-entrant (see Can_ReturnType)                    |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SWS ID:     |                                                                                   |
-|             |                                                                                   |
-|             |                                                                                   |
-| Vender ID:  |                                                                                   |
-|             |                                                                                   |
+| SWS ID:     |                                                                                                            |
+|             |                                                                                                            |
+| Vender ID:  |                                                                                                            |
+|             |                                                                                                            |
 |-------------------------------------------------------------------------------------------------------------------------*/
 Std_ReturnType Can_Write( Can_HwHandleType Hth, const Can_PduType* PduInfo );
 
@@ -842,7 +866,7 @@ Std_ReturnType Can_Write( Can_HwHandleType Hth, const Can_PduType* PduInfo );
 | Service ID  | CAN_MAIN_FUNCTION_WRITE_ID (0x01)                                                 |
 |             |                                                                                   |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SRS ID      | [SWS_CAN_00225]                                                                   |
+| SWS ID      | [SWS_CAN_00225]                                                                   |
 |             |                                                                                   |
 | Name        | Can_MainFunction_Write                                                            |
 |             |                                                                                   |
@@ -860,11 +884,10 @@ Std_ReturnType Can_Write( Can_HwHandleType Hth, const Can_PduType* PduInfo );
 | Return      | None.                                                                             |
 |             |                                                                                   |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SWS ID:     |                                                                                   |
-|             |                                                                                   |
-|             |                                                                                   |
-| Vender ID:  |                                                                                   |
-|             |                                                                                   |
+| SWS ID:     |                                                                                                            |
+|             |                                                                                                            |
+| Vender ID:  |                                                                                                            |
+|             |                                                                                                            |
 |-------------------------------------------------------------------------------------------------------------------------*/
 // #if ( ( CAN_TX_POLLING_PROCESSING == TRUE ) || ( CAN_TX_MIXED_PROCESSING == TRUE ) )
 extern void Can_MainFunction_Write( void );
@@ -879,7 +902,7 @@ extern void Can_MainFunction_Write( void );
 | Service ID  | CAN_MAIN_FUNCTION_READ_ID (0x08)                                                  |
 |             |                                                                                   |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SRS ID      | [SWS_CAN_00226]                                                                   |
+| SWS ID      | [SWS_CAN_00226]                                                                   |
 |             |                                                                                   |
 | Name        | Can_MainFunction_Read                                                             |
 |             |                                                                                   |
@@ -897,11 +920,10 @@ extern void Can_MainFunction_Write( void );
 | Return      | None.                                                                             |
 |             |                                                                                   |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SWS ID:     |                                                                                   |
-|             |                                                                                   |
-|             |                                                                                   |
-| Vender ID:  |                                                                                   |
-|             |                                                                                   |
+| SWS ID:     |                                                                                                            |
+|             |                                                                                                            |
+| Vender ID:  |                                                                                                            |
+|             |                                                                                                            |
 |-------------------------------------------------------------------------------------------------------------------------*/
 // #if ( ( CAN_RX_POLLING_PROCESSING == TRUE ) || ( CAN_RX_MIXED_PROCESSING == TRUE ) )
 void Can_MainFunction_Read( void );
@@ -915,7 +937,7 @@ void Can_MainFunction_Read( void );
 | Service ID  | CAN_MAIN_FUNCTION_BUS_OFF_ID (0x09)                                               |
 |             |                                                                                   |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SRS ID      | [SWS_CAN_00227]                                                                   |
+| SWS ID      | [SWS_CAN_00227]                                                                   |
 |             |                                                                                   |
 | Name        | Can_MainFunction_BusOff                                                           |
 |             |                                                                                   |
@@ -933,11 +955,10 @@ void Can_MainFunction_Read( void );
 | Return      | None.                                                                             |
 |             |                                                                                   |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SWS ID:     |                                                                                   |
-|             |                                                                                   |
-|             |                                                                                   |
-| Vender ID:  |                                                                                   |
-|             |                                                                                   |
+| SWS ID:     |                                                                                                            |
+|             |                                                                                                            |
+| Vender ID:  |                                                                                                            |
+|             |                                                                                                            |
 |-------------------------------------------------------------------------------------------------------------------------*/
 #if ( CAN_BUSOFF_POLLING_PROCESSING == TRUE )
 void Can_MainFunction_BusOff( void );
@@ -950,7 +971,7 @@ void Can_MainFunction_BusOff( void );
 | Service ID  | CAN_MAIN_FUNCTION_WAKEUP_ID (0x0A)                                                |
 |             |                                                                                   |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SRS ID      | [SWS_CAN_00228]                                                                   |
+| SWS ID      | [SWS_CAN_00228]                                                                   |
 |             |                                                                                   |
 | Name        | Can_MainFunction_Wakeup                                                           |
 |             |                                                                                   |
@@ -968,11 +989,10 @@ void Can_MainFunction_BusOff( void );
 | Return      | None.                                                                             |
 |             |                                                                                   |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SWS ID:     |                                                                                   |
-|             |                                                                                   |
-|             |                                                                                   |
-| Vender ID:  |                                                                                   |
-|             |                                                                                   |
+| SWS ID:     |                                                                                                            |
+|             |                                                                                                            |
+| Vender ID:  |                                                                                                            |
+|             |                                                                                                            |
 |-------------------------------------------------------------------------------------------------------------------------*/
 #if (STD_ON == CAN_WAKEUP_SUPPORT)
 void Can_MainFunction_Wakeup( void );
@@ -980,33 +1000,32 @@ void Can_MainFunction_Wakeup( void );
 
 
 /*-------------------------------------------------------------------------------------------------------------------------|
-| Module ID   | CAN_MODULE_ID (0x50)                                                              |
-|             |                                                                                   |
-| Service ID  | CAN_MAIN_FUNCTION_MODE_ID (0x0C)                                                  |
-|             |                                                                                   |
+| Module ID   | CAN_MODULE_ID (0x50)                                                                                       |
+|             |                                                                                                            |
+| Service ID  | CAN_MAIN_FUNCTION_MODE_ID (0x0C)                                                                           |
+|             |                                                                                                            |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SRS ID      | [SWS_CAN_00368]                                                                   |
-|             |                                                                                   |
-| Name        | Can_MainFunction_Mode                                                             |
-|             |                                                                                   |
-| Contents    | This function performs the polling of CAN controller mode transitions.            |
-|             |                                                                                   |
-| Details     | Performs polling for CAN controller mode transitions. This function checks for    |
-|             | changes in the controller's operating mode (such as Start, Stop, or Sleep) and    |
-|             | notifies upper layers.                                                            |
-|             |                                                                                   |
-| Param [in]  | None.                                                                             |
-|             |                                                                                   |
-| Param [out] | None.                                                                             |
-|             |                                                                                   |
-| Return      | None.                                                                             |
-|             |                                                                                   |
+| SWS ID      | [SWS_CAN_00368]                                                                                            |
+|             |                                                                                                            |
+| Name        | Can_MainFunction_Mode                                                                                      |
+|             |                                                                                                            |
+| Contents    | This function performs the polling of CAN controller mode transitions.                                     |
+|             |                                                                                                            |
+| Details     | Performs polling for CAN controller mode transitions. This function checks for changes in the controller's |
+|             | operating mode (such as Start, Stop, or Sleep) and notifies upper layers.                                  |
+|             |                                                                                                            |
+| Param [in]  | None.                                                                                                      |
+|             |                                                                                                            |
+| Param [out] | None.                                                                                                      |
+|             |                                                                                                            |
+| Return      | None.                                                                                                      |
+|             |                                                                                                            |
 |--------------------------------------------------------------------------------------------------------------------------|
-| SWS ID:     |                                                                                   |
-|             |                                                                                   |
-|             |                                                                                   |
-| Vender ID:  |                                                                                   |
-|             |                                                                                   |
+| SWS ID:     |                                                                                                            |
+|             |                                                                                                            |
+|             |                                                                                                            |
+| Vender ID:  |                                                                                                            |
+|             |                                                                                                            |
 |-------------------------------------------------------------------------------------------------------------------------*/
 extern void Can_MainFunction_Mode( void );
 
